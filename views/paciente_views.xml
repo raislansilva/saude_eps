@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="paciente_action_window" model="ir.actions.act_window">
+        <field name="name">Paciente</field>
+        <field name="res_model">saude_report.paciente</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph,pivot,form</field>
+    </record>
+
+    <record id="paciente_view_tree" model="ir.ui.view">
+        <field name="name">Paciente</field>
+        <field name="model">saude_report.paciente</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="paciente_view_form" model="ir.ui.view">
+        <field name="name">Paciente</field>
+        <field name="model">saude_report.paciente</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="cpf"/>
+                        <field name="email"/>
+                    </group>
+                    <group>
+                        <field name="categoria"/>
+                        <field name="cargo"/>
+                        <field name="nascimento"/>
+                    </group>
+                    <group>
+                        <field name="month_nasc"/>
+                        <field name="posse"/>
+                        <field name="ativo"/>
+                    </group>
+                    <group colsapan="1">
+                        <field name="documento_ids" widget="one2many_list" mode="tree" >
+                            <tree>
+                                <field name="name"/>
+                                <field name="id_documento" />
+                                <field name="paciente_id" />
+                                <field name="grupo_id"  />
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+
+    
+    <record id="grupo_action_window" model="ir.actions.act_window">
+        <field name="name">Grupo</field>
+        <field name="res_model">saude_report.grupo</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph,pivot,form</field>
+    </record>
+
+    <record id="grupo_view_form" model="ir.ui.view">
+        <field name="name">Grupos</field>
+        <field name="model">saude_report.grupo</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_send_email"  string="Enviar email" type="object"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="exercicio"/>
+                        <field name="mes"/>
+                    </group>
+                    <group>
+                        <field name="procedimento" attrs="{'readonly': [('exercicio', '!=', False)]}"/>
+                        <field name="id_proc" attrs="{'readonly': [('exercicio', '!=', False)]}"/>
+                    </group>
+                    <group colsapan="1">
+                        <field name="documento_ids" widget="one2many_list" mode="tree" >
+                            <tree>
+                                <field name="name"/>
+                                <field name="id_documento" />
+                                <field name="paciente_id" />
+                                <field name="grupo_id"  />
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+
+    <record id="grupo_view_tree" model="ir.ui.view">
+        <field name="name">Grupo</field>
+        <field name="model">saude_report.grupo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="exercicio"/>
+                <field name="mes"/>
+                <field name="ref"/>
+                <field name="procedimento"/>
+                <field name="id_proc"/>
+                <field name="link_procedimento" widget="url"/>
+                <field name="documento_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="consulta_view_form_inherit" model="ir.ui.view">
+        <field name="name">Consulta</field>
+        <field name="model">saude_atendimento.consulta</field>
+        <field name="inherit_id" ref="saude_atendimento.consulta_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="EPS" attrs="{'invisible':['|', ('paciente_id','=',False), ('eps','=',False)]}">
+                    <field name="requisicoes_ids" widget="one2many_list">
+                        <tree>
+                            <field name="id_documento"/>
+                            <field name="paciente_id"/>
+                            <field name="grupo_id"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="id_documento"/>
+                                <field name="paciente_id"/>
+                                <field name="grupo_id"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- menu categories -->
+    <menuitem name="Atendimento" id="saude_atendimento.atendimento" parent="saude.menu_root"/>
+    <menuitem name="EPS" id="saude_report.eps" parent="saude.menu_root"/>
+
+    <menuitem name="Paciente" id="saude_report.paciente_menu" parent="saude_report.eps"
+    action="saude_report.paciente_action_window"/>
+
+    <menuitem name="Grupos" id="saude_report.grupo_menu" parent="saude_report.eps"
+    action="saude_report.grupo_action_window"/>
+
+</odoo>

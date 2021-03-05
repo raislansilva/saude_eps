@@ -1,0 +1,36 @@
+<odoo>
+    <record model="ir.ui.view" id="bem_report_wizard_view">
+        <field name="name">EPS Não Realizados</field>
+        <field name="model">eps_report.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form >
+                <group>
+                    <group>
+                        <field name="grupo_id"/>
+                    </group>
+                
+                </group>
+                <footer>
+                    <button name="print_report"  string="Gerar Relatório" type="object" class="oe_highlight"/>
+                    <button string="Cancelar"  special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="action_eps_report_wizard" model="ir.actions.act_window">
+        <field name="name">EPS Não Realizados</field>
+        <field name="res_model">eps_report.wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>            
+
+    <menuitem action="action_eps_report_wizard"
+              id="menu_eps_report_wizard"
+              parent="saude_report.eps"/>
+</odoo>

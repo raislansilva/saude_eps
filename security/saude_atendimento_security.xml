@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<odoo>
+        <!--<record id="module_saude_category" model="ir.module.category">-->
+            <!--<field name="name">Saúde</field>-->
+            <!--<field name="sequence">10</field>-->
+        <!--</record>-->
+        <!--<record id="saude_group_user" model="res.groups">-->
+            <!--<field name="name">Usuário</field>-->
+            <!--<field name="category_id" ref="module_saude_category"/>-->
+            <!--<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+        <!--</record>-->
+      <!--<record id="saude_group_medico" model="res.groups">-->
+            <!--<field name="name">Médico</field>-->
+            <!--<field name="category_id" ref="module_saude_category"/>-->
+            <!--<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
+        <!--</record>-->
+        <!--<record id="saude_group_administrador" model="res.groups">-->
+            <!--<field name="name">Administrador</field>-->
+            <!--<field name="implied_ids" eval="[(4, ref('saude_group_user'))]"/>-->
+            <!--<field name="category_id" ref="module_saude_category"/>-->
+            <!--<field name="users" eval="[(4, ref('base.user_root'))]"/>-->
+        <!--</record>-->
+    <!--<data noupdate="1">-->
+        <!--<record id="base.default_user" model="res.users">-->
+            <!--<field name="groups_id" eval="[(4,ref('saude.saude_group_administrador'))]"/>-->
+        <!--</record>-->
+        <!--<record id="saude_rule_paciente" model="ir.rule">-->
+            <!--<field name="name">Acesso a Paciente</field>-->
+            <!--<field name="model_id" ref="model_saude_paciente"/>-->
+            <!--<field name="groups" eval="[(4, ref('saude_group_user'))]"/>-->
+            <!--<field name="perm_read" eval="True"/>-->
+            <!--<field name="perm_write" eval="True"/>-->
+            <!--<field name="perm_create" eval="True"/>-->
+            <!--<field name="perm_unlink" eval="False"/>-->
+            <!--&lt;!&ndash;<field name="domain_force">[('cost_id.vehicle_id.driver_id','=',user.partner_id.id)]</field>&ndash;&gt;-->
+        <!--</record>-->
+    <!--</data>-->
+</odoo>

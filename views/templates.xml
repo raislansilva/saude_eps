@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--<data>-->
+        <!--<template id="assets_backend" name="saude_assets" inherit_id="web.assets_backend">-->
+        <!--<xpath expr="." position="inside">-->
+            <!--<link rel="stylesheet" href="/account/static/src/css/account_bank_and_cash.css"/>-->
+            <!--<script type="text/javascript" src="/saude/static/src/js/widgets.js"></script>-->
+        <!--</xpath>-->
+    <!--</template>-->
+    <!--</data>-->
+</odoo>

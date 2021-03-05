@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="eps_custom_pdf_report">
+        <t t-call="report.html_container">
+            <t t-set="unidade" t-value="'Tribunal de Justiça do Estado do Piauí'"/>
+            <t t-set="setor" t-value="'Departamento de Material e Patrimônio-DEPMATPAT'"/>
+            <t t-call="tjpi.external_layout_almoxarifado">
+                <div class="page">
+                    <t t-if="len(docs) > 0">
+                        <center>
+                            <h3>
+                                <b>EPS Não Realizados</b>
+                            </h3>
+                        </center>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <strong>Paciente</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Prazo</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Grupo</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="docs" t-as="doc">
+                                    <td width="120px">
+                                        <span t-field="doc.paciente_id.name"/>
+                                    </td>
+                                    <td width="120px">
+                                        <span t-field="doc.prazo_eps"/>
+                                    </td>
+                                    <td width="120px">
+                                        <span t-field="doc.grupo_id.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                    <t t-else="">
+                        <center style="padding-top:10%">
+                            <h1>Todos os eps desse período foram realizados ou não estão vencidos.</h1>
+                        </center>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

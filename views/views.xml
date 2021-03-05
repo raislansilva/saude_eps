@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="absenteismo_action_window" model="ir.actions.act_window">
+        <field name="name">Absenteismo</field>
+        <field name="res_model">saude_report.absenteismo</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph,pivot,form</field>
+    </record>
+
+    <record id="absenteismo_view_tree" model="ir.ui.view">
+        <field name="name">Absenteísmo</field>
+        <field name="model">saude_report.absenteismo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="frequencia"/>
+                <field name="afastamento"/>
+                <field name="month"/>
+                <field name="year"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- menu categories -->
+    <menuitem name="Atendimento" id="saude_atendimento.atendimento" parent="saude.menu_root"/>
+
+    <menuitem name="Atestado" id="saude_report.relatorio" parent="saude.relatorio"
+    action="saude_report.absenteismo_action_window"/>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report id="eps_custom_act_report" string="saude_report"
+            model="report.saude_report.eps_custom_pdf_report" name="report"
+    />
+    <record id="eps_custom_act_report" model="ir.actions.report.xml">
+        <field name="name">EPS Não Realizados</field>
+        <field name="model">report.saude_report.eps_custom_pdf_report</field>
+        <field name="report_name">saude_report.eps_custom_pdf_report</field>
+        <field name="report_file">saude_report.eps_custom_pdf_report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="multi">True</field>
+        <field name="paperformat_id" ref="patrimonio.paisagem"/>
+        <field name="print_report_name">'EPS Não Realizados'</field>
+        <field name="usage">EPS Não Realizados</field>
+        <field name="help">EPS Não Realizados</field>
+    </record>
+    
+
+    <report
+    id="bem_xlsx"
+    model="patrimonio.bem"
+    string="Planilha de bens"
+    report_type="xlsx"
+    name="patrimonio.bem.xlsx"
+    file="patrimonio.bem.xlsx"
+    attachment_use="False"
+/>
+
+</odoo>

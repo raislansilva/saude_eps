@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saude_atendimento_prescricao,saude_atendimento.saude_atendimento_prescricao,model_saude_atendimento_prescricao,saude.saude_group_medico,1,1,1,1
+access_saude_atendimento_consulta,saude_atendimento.saude_atendimento_consulta,model_saude_atendimento_consulta,saude.saude_group_medico,1,1,1,1
+access_saude_atendimento_atestado,saude_atendimento.saude_atendimento_atestado,model_saude_atendimento_atestado,saude.saude_group_medico,1,1,1,1
